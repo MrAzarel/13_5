@@ -30,11 +30,13 @@ namespace _13_5
             {
                 Thread thread = new Thread(Work);
                 threads.Add(thread);
-                Thread.Sleep(10);
             }
             stopwatch.Start();
             foreach (var item in threads)
+            {
                 item.Start();
+                item.Join();
+            }
             stopwatch.Stop();
             Console.WriteLine("100 потоков: " + stopwatch.Elapsed);
         }
